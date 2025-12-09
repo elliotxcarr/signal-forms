@@ -1,0 +1,18 @@
+@import "tailwindcss";
+input{
+  @apply
+    outline-1
+    outline-black
+    p-2
+    flex
+}
+label{
+  @apply
+    text-2xl
+}
+button{
+  @apply
+    bg-blue-200
+    p-2
+    hover:cursor-pointer
+}

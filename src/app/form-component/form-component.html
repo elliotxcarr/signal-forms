@@ -1,0 +1,43 @@
+<form class="flex flex-col w-full items-center gap-2 my-15">
+  <label>Name
+    <input type="text" [field]="personalForm.name"/>
+  </label>
+  <label>
+    Email
+    <input type="email" [field]="personalForm.email"/>
+  </label>
+  <label>
+    Age
+    <input type="number" [field]="personalForm.age"/>
+  </label>
+  @if (personalForm.age().invalid()) {
+    @for (error of personalForm.age().errors(); track $index) {
+      <div>{{error.message}}</div>
+    }
+  }
+  <select [field]="personalForm.settings.role" >
+      <option value="admin">Admin</option>
+      <option value="user">User</option>
+  </select>
+  <label>
+    Current Role: {{personalForm.settings.role().value()}}
+  </label>
+  <label>
+    Address Line 1
+    <input type="text" [field]="personalForm.address.line1" class="disabled:bg-gray-300"/>
+  </label>
+  <label>
+    Address Line 2
+    <input type="text" [field]="personalForm.address.line2" class="read-only:bg-gray-400"/>
+  </label>
+  @if (personalForm().dirty()) {
+    <div>This form is dirty</div>
+  }
+  @if (personalForm.name().dirty()) {
+    <div>Name field is dirty</div>
+  }
+  @if (personalForm.email().dirty()) {
+    <div>Email field is dirty</div>
+  }
+</form>
+
